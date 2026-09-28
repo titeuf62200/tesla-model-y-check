@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="Checklist de livraison Tesla Model Y Propulsion — contrôle complet, notes et rapport hors ligne." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Model Y Check" />
+  <title>Model Y Check — Livraison Tesla Model Y</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon-180.png" />
+  <link rel="icon" type="image/png" href="icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div class="hero-topline">
+        <div class="brand-pill" aria-label="Application indépendante pour la réception du véhicule">
+          <span class="brand-mark">Y</span>
+          <span>CHECK</span>
+        </div>
+        <button class="icon-button" id="installButton" type="button" title="Installer l'application" aria-label="Installer l'application">
+          <span aria-hidden="true">↓</span>
+        </button>
+      </div>
+
+      <div class="hero-copy">
+        <p class="eyebrow">Réception véhicule</p>
+        <h1>Model Y <span>Propulsion</span></h1>
+        <p class="subtitle">La checklist de livraison pensée pour ne rien oublier le jour J.</p>
+      </div>
+
+      <div class="car-stage" aria-label="Illustration stylisée d'un Tesla Model Y nouvelle génération">
+        <svg viewBox="0 0 900 310" role="img" aria-labelledby="carTitle carDesc">
+          <title id="carTitle">SUV électrique blanc de profil</title>
+          <desc id="carDesc">Illustration stylisée rappelant la silhouette du nouveau Model Y.</desc>
+          <defs>
+            <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset="0.65" stop-color="#eceff3"/>
+              <stop offset="1" stop-color="#cfd4dc"/>
+            </linearGradient>
+            <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#4e5968"/>
+              <stop offset="1" stop-color="#11161d"/>
+            </linearGradient>
+            <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+              <feDropShadow dx="0" dy="18" stdDeviation="16" flood-opacity="0.22"/>
+            </filter>
+          </defs>
+          <ellipse cx="450" cy="257" rx="330" ry="24" fill="#dfe4ea" opacity="0.8"/>
+          <g filter="url(#shadow)">
+            <path d="M146 205c18-58 55-75 117-93 62-18 112-29 165-31 77-2 130 21 187 73 29 4 72 13 105 31 22 12 32 33 28 56-2 10-10 18-21 18H165c-21 0-31-18-26-37l7-17z" fill="url(#body)" stroke="#bfc5ce" stroke-width="3"/>
+            <path d="M316 109c47-13 88-20 132-21 61-2 106 15 153 57l-113 0-172-2z" fill="url(#glass)" opacity="0.97"/>
+            <path d="M477 91l8 53" stroke="#8993a2" stroke-width="3"/>
+            <path d="M284 146h333" stroke="#c1c6cf" stroke-width="2"/>
+            <path d="M146 205c31 3 56 8 76 18" stroke="#9da6b2" stroke-width="3" fill="none"/>
+            <path d="M704 186c17 6 31 14 43 24" stroke="#ff4b4b" stroke-width="7" stroke-linecap="round"/>
+            <path d="M150 199c14-22 33-32 58-35" stroke="#f9f9ff" stroke-width="8" stroke-linecap="round"/>
+            <circle cx="280" cy="232" r="54" fill="#222831" stroke="#0e1116" stroke-width="6"/>
+            <circle cx="280" cy="232" r="34" fill="#aeb5c0"/>
+            <circle cx="280" cy="232" r="15" fill="#232a33"/>
+            <circle cx="624" cy="232" r="54" fill="#222831" stroke="#0e1116" stroke-width="6"/>
+            <circle cx="624" cy="232" r="34" fill="#aeb5c0"/>
+            <circle cx="624" cy="232" r="15" fill="#232a33"/>
+          </g>
+        </svg>
+        <div class="model-chip">Nouvelle génération · Propulsion</div>
+      </div>
+    </header>
+
+    <main>
+      <p id="offlineStatus" role="status" class="offline-status"></p>
+      <section class="notes-card"><label for="vehicle"><strong>Ma livraison</strong></label><input id="vehicle" maxlength="180" placeholder="Date, lieu, référence du véhicule (facultatif)"><small class="privacy-note">Sauvegarde automatique sur ce navigateur. Aucune donnée envoyée à un serveur. Exportez le bilan avant de changer d’appareil ou d’effacer les données du navigateur.</small></section>
+      <section class="progress-card" aria-labelledby="progressTitle">
+        <div class="progress-header">
+          <div>
+            <p class="eyebrow dark">Progression</p>
+            <h2 id="progressTitle"><span id="doneCount">0</span> / <span id="totalCount">0</span> contrôles traités</h2>
+          </div>
+          <div class="progress-ring" id="progressRing" aria-label="0 pour cent terminé">
+            <span id="progressPercent">0%</span>
+          </div>
+        </div>
+        <div class="progress-bar" aria-hidden="true"><div id="progressBar"></div></div>
+        <div class="status-row">
+          <span><i class="dot ok"></i><strong id="okCount">0</strong> OK</span>
+          <span><i class="dot issue"></i><strong id="issueCount">0</strong> à signaler</span>
+          <span><i class="dot"></i><strong id="naCount">0</strong> N.A.</span>
+          <span><i class="dot pending"></i><strong id="pendingCount">0</strong> à vérifier</span>
+        </div>
+      </section>
+
+      <section class="quick-actions" aria-label="Actions rapides">
+        <button type="button" class="quick-card" id="issuesButton">
+          <span class="quick-icon">!</span>
+          <span><strong>Points à signaler</strong><small>Voir uniquement les anomalies</small></span>
+        </button>
+        <button type="button" class="quick-card" id="reportButton">
+          <span class="quick-icon">↗</span>
+          <span><strong>Rapport de réception</strong><small>Copier ou partager le bilan</small></span>
+        </button>
+      </section>
+
+      <section class="section-heading">
+        <div>
+          <p class="eyebrow dark">48 points · 8 étapes</p>
+          <h2>Checklist de livraison</h2>
+        </div>
+        <button type="button" class="text-button" id="expandAllButton">Tout ouvrir</button>
+      </section>
+
+      <div id="checklist" class="checklist"></div>
+
+      <section class="notes-card">
+        <div class="notes-heading">
+          <div>
+            <p class="eyebrow dark">Mémo</p>
+            <h2>Notes générales</h2>
+          </div>
+          <span class="save-state" id="saveState" role="status">Sauvegarde locale</span>
+        </div>
+        <textarea aria-label="Notes générales" id="generalNotes" rows="5" placeholder="Ex. : heure de livraison, nom du conseiller, réserves, numéro de dossier…"></textarea>
+      </section>
+
+      <section class="final-card">
+        <div>
+          <p class="eyebrow">Dernière étape</p>
+          <h2>Avant de repartir</h2>
+          <p>Vérifie que tous les défauts sont bien signalés dans l'application Tesla ou confirmés par écrit.</p>
+        </div>
+        <button type="button" id="finalizeButton" class="primary-button">Faire le bilan</button>
+      </section>
+
+      <button type="button" id="resetButton" class="text-button">Nouvelle réception · Effacer les données</button>
+      <p class="disclaimer">Application indépendante, non affiliée à Tesla, Inc. Les contrôles proposés servent d'aide-mémoire et ne remplacent pas les documents officiels de livraison.</p>
+    </main>
+  </div>
+
+  <dialog id="modal" class="modal" aria-labelledby="modalTitle">
+    <form method="dialog" class="modal-card">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow dark" id="modalEyebrow">Bilan</p>
+          <h2 id="modalTitle">Rapport de réception</h2>
+        </div>
+        <button type="submit" class="icon-button light" aria-label="Fermer">×</button>
+      </div>
+      <div id="modalContent" class="modal-content"></div>
+      <div class="modal-actions">
+        <button type="button" id="downloadReportButton" class="secondary-button">Télécharger</button>
+        <button type="button" id="copyReportButton" class="secondary-button">Copier</button>
+        <button type="button" id="shareReportButton" class="primary-button">Partager</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="installDialog" class="modal" aria-labelledby="installTitle">
+    <form method="dialog" class="modal-card">
+      <div class="modal-head"><h2 id="installTitle">Installer Model Y Check</h2><button class="icon-button" aria-label="Fermer">×</button></div>
+      <div class="modal-content">
+        <h3>Sur iPhone / iPad</h3><p>Ouvrez ce lien dans Safari, touchez le bouton Partager, puis « Sur l’écran d’accueil » (ou « Ajouter à l’écran d’accueil »), puis Ajouter. Activez « Ouvrir comme app web » si l’option apparaît.</p>
+        <h3>Sur Android</h3><p>Ouvrez ce lien dans Chrome, puis le menu ⋮ et « Installer l’application » ou « Ajouter à l’écran d’accueil ». Vous pouvez aussi utiliser le bouton d’installation de cette application.</p>
+        <h3>Sans réseau</h3><p>Ouvrez l’application une première fois avec Internet. Attendez le message « Prêt hors ligne » avant de couper la connexion. Les contrôles et notes restent disponibles sur ce navigateur.</p>
+        <p>Une application installée peut avoir un stockage distinct selon le navigateur. Vérifiez votre bilan après installation et conservez un export.</p>
+      </div>
+    </form>
+  </dialog>
+  <noscript><p>Activez JavaScript pour utiliser la checklist et la sauvegarde locale.</p></noscript>
+  <script src="app.js" defer></script>
+</body>
+</html>
